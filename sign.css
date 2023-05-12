@@ -1,0 +1,11 @@
+  @font-face {
+  font-family: 'AcuminBold';
+  src: url('/font/Acumin-BdPro.otf') format('truetype');
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Georgia;
+  src: url('chemin/vers/ma-police-italic.ttf') format('truetype');
+  font-style: italic;
+}
