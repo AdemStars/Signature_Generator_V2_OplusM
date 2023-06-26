@@ -1,0 +1,147 @@
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+    <py-config type="json">
+        {
+        "fetch": [{
+          "files": ["sample.png"]
+        }],
+        "fetch": [{
+            "files": ["/font/Acumin-RPro.otf"]
+          }],
+        "packages" : ["numpy","pandas","pillow","requests"]
+      }
+    </py-config>
+    
+</head>
+
+<body>
+    <div id="feedback-form">
+        <h2 class="header">OplusM Signature Generator</h2>
+        <div>
+            <form onsubmit="return false">
+                <!-- <label for="mode">Mode</label> 
+        <select id="mode" name="mode">
+            <option value="choix">Choix du mode</option>
+            <option value="manuel">Manuel</option>
+            <option value="CSV">CSV</option>
+        </select> -->
+                <label for="prenom" id="prenom-label">Prenom</label>
+                <input type="text" name="prenom" id="prenom-input" value="" required />
+                <label for="nom" id="nom-label">Nom</label>
+                <input type="text" name="nom" id="nom-input" value="" required />
+                <label for="REG">Agence</label>
+                <select id="REG" name="REG" value="">
+                    <option value="IDF">Agence de Plaisir</option>
+                    <option value="CTA">Agence de Genay</option>
+                    <option value="MED">Agence de St Remy de Provence</option>
+                    <option value="SWT">Agence de L'isle Jourdain</option>
+                    <option value="WST">Agence de St Luce sur Loire</option>
+                    <option value="CVL">Agence de La Chapelle Saint Mesmin</option>
+                    <option value="SWT-BDX">Agence de Blanquefort</option>
+                </select>
+                <label for="email" id="email-label">E-mail</label>
+                <input type="email" name="email" id="email-input" value="" required />
+                <label for="tel" id="tel-label">Telephone</label>
+                <input type="tel" name="tel" id="tel-input" value="" required />
+                <label for="poste" id="poste-label">Poste</label>
+                <input type="text" name="poste" id="poste-input" value="" required />
+                <br>
+                <!-- <label for='fichier'>Ajouter le CSV </label>
+                <input type="file" name="fichier[]" id="fichier" multiple>
+            <div>
+                <button type="hidden" class="btn" id="exemple"><i class="fa fa-download"></i> Exemple CSV</button>     -->
+                <button py-Click="test()" type="submit" class="btn" id="generer-btn">Generer</button>
+                <!--     </div>
+        -->
+            </form>
+        </div>
+        <img src="sample.png" type="file" id="test" hidden>
+        <div id="output_upload_pillow"></div>
+        <py-script src="signature.py">
+        </py-script>
+        <br>
+        <button class="btn" href="images/gallery/1.jpg" download="/path/to/image">Télécharger</button>
+<!--         <py-script>
+            import signature
+            def sub(*args,**kwargs):
+            affi_nom = Element('one')
+            affi_agence = Element('two')
+            affi_mail = Element('three')
+            affi_poste = Element('four')
+            prenom= f"{Element('prenom-input').value}"
+            nom= f"{Element('nom-input').value}"
+            agence= f"{Element('REG').value}"
+            email= f"{Element('email-input').value}"
+            tel= f"{Element('tel-input').value}"
+            poste= f"{Element('poste-input').value}"
+            affi_nom.write(str(prenom) +' '+ str(nom))
+            affi_agence.write(str(agence))
+            affi_mail.write(str(email)+' '+ str(tel))
+            affi_poste.write(str(poste))
+            nomimage=signature(prenom, nom, agence, tel, poste)
+        </py-script> -->
+        
+    </div>
+</body>
+<!--<script>
+    const modeSelect = document.getElementById("mode");
+    const prenomLabel = document.getElementById("prenom-label");
+    const prenomInput = document.getElementById("prenom-input");
+    const nomLabel = document.getElementById("nom-label");
+    const nomInput = document.getElementById("nom-input");
+    const emailLabel = document.getElementById("email-label");
+    const emailInput = document.getElementById("email-input");
+    const telLabel = document.getElementById("tel-label");
+    const telInput = document.getElementById("tel-input");
+    const posteLabel = document.getElementById("poste-label");
+    const posteInput = document.getElementById("poste-input");
+    const exempledll = document.getElementById("exemple");
+
+    modeSelect.addEventListener("change", (event) => {
+        const mode = event.target.value;
+        if (mode === "CSV") {
+            prenomLabel.style.display = "none";
+            prenomInput.style.display = "none";
+            nomLabel.style.display = "none";
+            nomInput.style.display = "none";
+            emailLabel.style.display = "none";
+            emailInput.style.display = "none";
+            telLabel.style.display = "none";
+            telInput.style.display = "none";
+            posteLabel.style.display = "none";
+            posteInput.style.display = "none";
+            exempledll.style.display = "block";
+        } if (mode == "Manuel") {
+            prenomLabel.style.display = "none";
+            prenomInput.style.display = "none";
+            nomLabel.style.display = "none";
+            nomInput.style.display = "none";
+            emailLabel.style.display = "none";
+            emailInput.style.display = "none";
+            telLabel.style.display = "none";
+            telInput.style.display = "none";
+            posteLabel.style.display = "none";
+            posteInput.style.display = "none";
+            exempledll.style.display = "block";
+            
+        } else {
+            
+        } {
+            prenomLabel.style.display = "block";
+            prenomInput.style.display = "block";
+            nomLabel.style.display = "block";
+            nomInput.style.display = "block";
+            emailLabel.style.display = "block";
+            emailInput.style.display = "block";
+            telLabel.style.display = "block";
+            telInput.style.display = "block";
+            posteLabel.style.display = "block";
+            posteInput.style.display = "block";
+            exempledll.style.display = "none";
+
+        }
+    });
+</script>
